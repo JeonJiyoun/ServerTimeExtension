@@ -1,7 +1,8 @@
 {
-    "name": "My Extension",
-    "version": "1.1",
+    "name": "Server Time Extension",
+    "version": "1.0",
     "manifest_version": 2,
+    "description": "Extensions that tell you the server time of the web page you want",
     "background": {
       "scripts": ["background.js"]
     },
