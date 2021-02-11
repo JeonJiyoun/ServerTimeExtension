@@ -31,9 +31,9 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './public/index.html',
+    // }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns:[
