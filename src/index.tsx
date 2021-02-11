@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom"
 import App from './App';
 import "../public/root.css";
 
+/** Chrome Extension 의 Content Script */
 const app = document.createElement('div');
 app.id = "my-extension";
 document.body.appendChild(app);
@@ -25,4 +26,9 @@ function toggle(){
    }
 }
 
+
+/**
+ * local => documnet.getElementById("app")
+ * extension => app
+ */
 ReactDOM.render(<App name='Hello~' />, app);
