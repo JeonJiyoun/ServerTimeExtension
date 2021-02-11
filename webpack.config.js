@@ -30,7 +30,11 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
-  plugins: [
+  plugins: [  
+    /*
+    local 확인 => HtmlWebpackPlugin On, CopyWebpackPlugin Off
+    Extension 확인 => HtmlWebpackPlugin Off, CopyWebpackPlugin On
+    */
     // new HtmlWebpackPlugin({
     //   template: './public/index.html',
     // }),
