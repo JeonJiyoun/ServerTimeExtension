@@ -10,6 +10,25 @@ app.id = "my-extension";
 document.body.appendChild(app);
 app.style.display = "block";
 
+let url = document.location.href;
+let divname = "default";
+if(url.includes("interpark"))
+{
+  divname = "interpark";
+}
+else if(url.includes("yes24"))
+{
+  divname = "yes24";
+}
+else if(url.includes("melon"))
+{
+  divname = "melon";
+}
+else
+{
+  divname = "default";
+}
+
 chrome.runtime.onMessage.addListener(
    function(request, sender, sendResponse) {
       if( request.message === "click") {
@@ -26,9 +45,9 @@ function toggle(){
    }
 }
 
-
 /**
  * local => documnet.getElementById("app")
  * extension => app
  */
-ReactDOM.render(<App name='Hello~' />, app);
+
+ReactDOM.render(<App name='Hello~' contentdiv={divname}/>, app);
