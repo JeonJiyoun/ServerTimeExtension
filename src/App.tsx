@@ -3,7 +3,7 @@ import * as React from 'react';
 import Frame, { FrameContextConsumer }from 'react-frame-component';
 import Content from './Content';
 
-const App: React.FC = () => {
+function App() {
 
   /** 서버시간 가져오기 */
   var xmlHttpRequest;

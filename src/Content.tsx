@@ -16,7 +16,7 @@ interface ServerTime {
   seconds : string;
 }
 
-const Content: React.FC<ContentProps> = (props) => {
+function Content (props: ContentProps) {
   const { divType, current } = props;
   const [ ServerTime, setServerTime ] = useState<ServerTime>({
     hours : '',
