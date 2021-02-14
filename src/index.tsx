@@ -26,9 +26,9 @@ function toggle(){
    }
 }
 
-
 /**
  * local => documnet.getElementById("app")
  * extension => app
  */
-ReactDOM.render(<App name='Hello~' />, app);
+
+ReactDOM.render(<App />, app);
