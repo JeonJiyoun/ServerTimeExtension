@@ -3,14 +3,14 @@ import * as React from 'react';
 import Frame, { FrameContextConsumer }from 'react-frame-component';
 import Content from './Content';
 interface AppProps {
-  name: string;
   contentdiv: string;
+  current : Date;
 }
 
 const App: React.FC<AppProps> = props => {
-  const { name, contentdiv } = props;
+  const { contentdiv, current } = props;
   return (
-    <Content name={name} contentdiv={contentdiv}/> 
+    <Content contentdiv={contentdiv} current = {current}/> 
   );
 }
 
