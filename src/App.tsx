@@ -9,15 +9,7 @@ interface AppProps {
 const App: React.FC<AppProps> = props => {
   const { name } = props;
   return (
-    <Frame> 
-      <FrameContextConsumer>
-      {
-        ({document, window}) => {
-          return <Content name={name}/> 
-        }
-      }
-      </FrameContextConsumer>
-    </Frame>
+    <Content name={name}/> 
   );
 }
 
