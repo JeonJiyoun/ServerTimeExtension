@@ -10,24 +10,6 @@ app.id = "my-extension";
 document.body.appendChild(app);
 app.style.display = "block";
 
-/** 서버시간 가져오기 */
-var xmlHttpRequest;
-/** Firefox, Mozilla, IE7, etc */
-if (window.XMLHttpRequest) {
-  xmlHttpRequest = new XMLHttpRequest();
-}
-/** IE5, IE6 */
-else if (window.ActiveXObject) {
-  xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-}
-
-xmlHttpRequest.open('Head', window.location.href.toString(), false);
-xmlHttpRequest.setRequestHeader("ContentType", "text/html");
-xmlHttpRequest.send('');
-
-var serverDate = xmlHttpRequest.getResponseHeader("Date");
-var dttm = new Date(serverDate);
-
 let url = document.location.href;
 let divname = "default";
 if(url.includes("interpark"))
@@ -68,4 +50,4 @@ function toggle(){
  * extension => app
  */
 
-ReactDOM.render(<App contentdiv={divname} current={dttm}/>, app);
+ReactDOM.render(<App name='Hello~' contentdiv={divname}/>, app);
