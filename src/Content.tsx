@@ -6,7 +6,7 @@ import useInterval from 'react-useinterval';
 import { ContentDiv } from './ContentDiv';
 
 interface ContentProps {
-  DivType: string;
+  divType: string;
   current : Date;
 }
 
@@ -17,7 +17,7 @@ interface ServerTime {
 }
 
 const Content: React.FC<ContentProps> = (props) => {
-  const { DivType, current } = props;
+  const { divType, current } = props;
   const [ ServerTime, setServerTime ] = useState<ServerTime>({
     hours : '',
     minutes : '',
@@ -42,7 +42,7 @@ const Content: React.FC<ContentProps> = (props) => {
 
   return (
     <Draggable defaultPosition={{ x: 0, y: -100 }}>
-      <ContentDiv className={DivType}>
+      <ContentDiv className={divType}>
         <h1>{current.getFullYear()}-{current.getMonth() < 10 ? "0" + (current.getMonth() + 1) : current.getMonth() + 1}-{current.getDate() < 10 ? "0" + current.getDate() + 1 : current.getDate()}</h1>
         <span>{ServerTime.hours}:{ServerTime.minutes}:{ServerTime.seconds}</span>
       </ContentDiv>

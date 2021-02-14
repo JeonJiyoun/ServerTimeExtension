@@ -25,26 +25,26 @@ const App: React.FC = () => {
 
   let url = document.location.href.split('.com', 1);
 
-  let DivType = "default";
+  let divType = "default";
   if(url[0].includes("interpark"))
   {
-    DivType = "interpark";
+    divType = "interpark";
   }
   else if(url[0].includes("yes24"))
   {
-    DivType = "yes24";
+    divType = "yes24";
   }
   else if(url[0].includes("melon"))
   {
-    DivType = "melon";
+    divType = "melon";
   }
   else
   {
-    DivType = "default";
+    divType = "default";
   }
 
   return (
-    <Content DivType={DivType} current = {dttm}/> 
+    <Content divType={divType} current = {dttm}/> 
   );
 }
 
