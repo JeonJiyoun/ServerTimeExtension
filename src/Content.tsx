@@ -3,10 +3,10 @@ import * as React from "react";
 import { useState } from 'react';
 import Draggable from "react-draggable";
 import useInterval from 'react-useinterval';
+import { ContentDiv } from './ContentDiv';
 
 interface ContentProps {
-  //name: string;
-  contentdiv: string;
+  DivType: string;
   current : Date;
 }
 
@@ -17,15 +17,12 @@ interface ServerTime {
 }
 
 const Content: React.FC<ContentProps> = (props) => {
-  const { contentdiv, current } = props;
-  const [ serverTime, setServerTime ] = useState<ServerTime>({
+  const { DivType, current } = props;
+  const [ ServerTime, setServerTime ] = useState<ServerTime>({
     hours : '',
     minutes : '',
     seconds : ''
   });
-  const style = {
-    textAlign: "center" as const,
-  };
 
   useInterval(()=>{
       current.setSeconds(current.getSeconds() + 1);
@@ -45,10 +42,10 @@ const Content: React.FC<ContentProps> = (props) => {
 
   return (
     <Draggable defaultPosition={{ x: 0, y: -100 }}>
-      <div style={style} className={contentdiv}>
+      <ContentDiv className={DivType}>
         <h1>{current.getFullYear()}-{current.getMonth() < 10 ? "0" + (current.getMonth() + 1) : current.getMonth() + 1}-{current.getDate() < 10 ? "0" + current.getDate() + 1 : current.getDate()}</h1>
-        <span>{serverTime.hours}:{serverTime.minutes}:{serverTime.seconds}</span>
-      </div>
+        <span>{ServerTime.hours}:{ServerTime.minutes}:{ServerTime.seconds}</span>
+      </ContentDiv>
     </Draggable>
   );
 };
