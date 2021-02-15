@@ -1,7 +1,7 @@
 // App.tsx
 import * as React from 'react';
 import Frame, { FrameContextConsumer }from 'react-frame-component';
-import Content from './Content';
+import ContentPresenter from './presentationals/ContentPresenter';
 
 function App() {
 
@@ -44,7 +44,10 @@ function App() {
   }
 
   return (
-    <Content divType={divType} current = {dttm}/> 
+    <ContentPresenter 
+      divType={divType} 
+      current = {dttm}
+    /> 
   );
 }
 
