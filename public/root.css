@@ -1,4 +1,4 @@
-#my-extension{
+#my-extension {
   width: 100%;
   height: 1px;
   position: fixed;
@@ -7,17 +7,17 @@
   z-index: 10000;
 }
 
-.interpark{
+.interpark {
   background-color: #ef3f43;
   border: 1px solid #ef3f43;
 }
 
-.yes24{
+.yes24 {
   background-color: #f43142;
   border: 2px solid #f43142;
 }
 
-.melon{
+.melon {
   background-color: #41d26b;
   border: 1px solid #41d26b;
 }
