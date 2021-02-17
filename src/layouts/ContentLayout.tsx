@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface ThemeType {
+  background : string,
+  border : string
+}
 
 const ContentLayout = styled.div`
   width: 300px;
@@ -7,7 +12,8 @@ const ContentLayout = styled.div`
   border-radius: 1rem;
   text-align: center;
   color: #fff;
-  background-color: black;
+  background-color: ${($props: { theme : ThemeType}) => $props.theme.background};
+  border:  ${($props: { theme : ThemeType}) => $props.theme.border};
 `;
 
 export { ContentLayout };
