@@ -5,6 +5,11 @@ import { ContentLayout } from "../layouts/ContentLayout";
 import TimerContainer from "../containers/TimerContainer";
 import UrlInputPresenter from "../presentationals/UrlInputPresenter";
 
+interface ThemeType {
+  background : string,
+  border : string
+}
+
 function RootContainer() {
   const [url, setUrl] = React.useState<string>(window.location.href.toString());
   console.log(url);
@@ -23,26 +28,39 @@ function RootContainer() {
   xmlHttpRequest.send("");
 
   var ServerDate = xmlHttpRequest.getResponseHeader("Date");
-  var dttm = new Date(ServerDate);
+  var dateTime = new Date(ServerDate);
 
   let domain = document.location.href.split(".com", 1);
 
-  let divType = "default";
-  if (domain[0].includes("interpark")) {
-    divType = "interpark";
-  } else if (domain[0].includes("yes24")) {
-    divType = "yes24";
-  } else if (domain[0].includes("melon")) {
-    divType = "melon";
-  } else {
-    divType = "default";
+  let theme : ThemeType = {
+    background : "black",
+    border : "none"
   }
-  console.log(dttm);
+  
+  if (domain[0].includes("interpark")) {
+    theme = {
+      background : "#ef3f43",
+      border : "1px solid #ef3f43"
+    }
+  } else if (domain[0].includes("yes24")) {
+    theme = {
+      background : "#f43142",
+      border : "2px solid #f43142"
+    }
+  } else if (domain[0].includes("melon")) {
+    theme = {
+      background : "#41d26b",
+      border : "1px solid #41d26b"
+    }
+  } else {
+    ;
+  }
+
   return (
     <Draggable defaultPosition={{ x: 0, y: -100 }}>
-      <ContentLayout className={divType}>
+      <ContentLayout theme={theme}>
         <UrlInputPresenter onSubmit={setUrl} />
-        <TimerContainer current={dttm} />
+        <TimerContainer current={dateTime} />
       </ContentLayout>
     </Draggable>
   );
