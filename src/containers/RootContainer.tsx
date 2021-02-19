@@ -7,42 +7,43 @@ import UrlInputPresenter from "../presentationals/UrlInputPresenter";
 
 function RootContainer() {
   const [url, setUrl] = React.useState<string>(window.location.href.toString());
-  console.log(url);
-  /** 서버시간 가져오기 */
-  var xmlHttpRequest;
-  /** Firefox, Mozilla, IE7, etc */
-  if (window.XMLHttpRequest) {
-    xmlHttpRequest = new XMLHttpRequest();
-  } else if (window.ActiveXObject) {
-    /** IE5, IE6 */
-    xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-  }
+  const [dateTime, setDateTime] = React.useState(new Date());
+  const [divType, setDivType] = React.useState("default");
+  const inputOnSubmit = (value: string) => {
+    if (value === "") {
+      setUrl(window.location.href.toString());
+    } else {
+      setUrl(value);
+    }
+  };
 
-  xmlHttpRequest.open("Head", url, false);
-  xmlHttpRequest.setRequestHeader("ContentType", "text/html");
-  xmlHttpRequest.send("");
+  React.useEffect(() => {
+    // background.js 의 getServerTime 실행
+    chrome.runtime.sendMessage(
+      { message: "requestServerTime", url: url },
+      function (response) {
+        let domain = url.split(".com", 1);
 
-  var ServerDate = xmlHttpRequest.getResponseHeader("Date");
-  var dttm = new Date(ServerDate);
+        if (domain[0].includes("interpark")) {
+          setDivType("interpark");
+        } else if (domain[0].includes("yes24")) {
+          setDivType("yes24");
+        } else if (domain[0].includes("melon")) {
+          setDivType("melon");
+        } else {
+          setDivType("default");
+        }
 
-  let domain = document.location.href.split(".com", 1);
+        setDateTime(new Date(response.time));
+      }
+    );
+  }, [url]);
 
-  let divType = "default";
-  if (domain[0].includes("interpark")) {
-    divType = "interpark";
-  } else if (domain[0].includes("yes24")) {
-    divType = "yes24";
-  } else if (domain[0].includes("melon")) {
-    divType = "melon";
-  } else {
-    divType = "default";
-  }
-  console.log(dttm);
   return (
     <Draggable defaultPosition={{ x: 0, y: -100 }}>
       <ContentLayout className={divType}>
-        <UrlInputPresenter onSubmit={setUrl} />
-        <TimerContainer current={dttm} />
+        <UrlInputPresenter onSubmit={inputOnSubmit} />
+        <TimerContainer current={dateTime} />
       </ContentLayout>
     </Draggable>
   );
