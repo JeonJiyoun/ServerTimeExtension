@@ -1,11 +1,8 @@
 // Content.tsx
 import * as React from "react";
-import Draggable from "react-draggable";
-import { ContentLayout } from "../layouts/ContentLayout";
-import TimerContainer from "../containers/TimerContainer";
 
 interface Props {
-  onSubmit: React.Dispatch<React.SetStateAction<string>>;
+  onSubmit: (value: string) => void;
 }
 
 function UrlInputPresenter({ onSubmit }: Props) {
@@ -17,10 +14,6 @@ function UrlInputPresenter({ onSubmit }: Props) {
 
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (value === "") {
-        setValue(window.location.href.toString());
-      }
-      console.log(value)
       onSubmit(value);
     }
   };
