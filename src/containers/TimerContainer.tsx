@@ -1,7 +1,6 @@
 // TimerContainer.tsx
 import * as React from "react";
-import { useState } from 'react';
-import useInterval from 'react-useinterval';
+import { useState, useRef } from 'react';
 import TimerPresenter from '../presentationals/TimerPresenter';
 
 interface TimerProps {
@@ -14,29 +13,30 @@ interface ServerTime {
     seconds : string;
 }
 
-function TimerContainer (props: TimerProps) {
-    const { current } = props;
+function TimerContainer ( { current } : TimerProps) {
     const [ ServerTime, setServerTime ] = useState<ServerTime>({
         hours : '',
         minutes : '',
         seconds : ''
     });
 
-    useInterval(()=>{
+    const currentTime = useRef<any>();
+
+    const setTime = () => {
         current.setSeconds(current.getSeconds() + 1);
 
-        var nowHours = current.getHours();
-        var nowMinutes = current.getMinutes();
-        var nowSeconds = current.getSeconds();
+        setServerTime({
+            hours : current.getHours() < 10 ? "0" + current.getHours() : current.getHours().toString(),
+            minutes : current.getMinutes() < 10 ? "0" + current.getMinutes() : current.getMinutes().toString(),
+            seconds : current.getSeconds() < 10 ? "0" + current.getSeconds() : current.getSeconds().toString()
+        });
+    }
 
-        const nowTime : ServerTime = {
-            hours : nowHours < 10 ? "0" + nowHours : nowHours.toString(),
-            minutes : nowMinutes < 10 ? "0" + nowMinutes : nowMinutes.toString(),
-            seconds : nowSeconds < 10 ? "0" + nowSeconds : nowSeconds.toString()
-        }
+    React.useEffect( () => {
+        currentTime.current = setInterval(setTime, 1000);
 
-        setServerTime(serverTime => nowTime);
-    }, 1000);
+        return () => clearInterval(currentTime.current);
+    });
 
     return (
         <TimerPresenter 
