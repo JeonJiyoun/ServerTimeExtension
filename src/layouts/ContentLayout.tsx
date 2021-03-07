@@ -6,7 +6,6 @@ interface ThemeType {
 }
 
 const ContentLayout = styled.div`
-  font-family: 'Play', sans-serif !important;
   width: 300px;
   height: 100px;
   box-shadow: 0 6px 18px 0 rgb(51 51 51 / 30%);
@@ -18,6 +17,7 @@ const ContentLayout = styled.div`
 `;
 
 const TimerLayout = styled.div`
+  font-family: 'Play', sans-serif !important;
   color: #fff;
 `;
 const DateContainer = styled.div`
@@ -27,15 +27,18 @@ const DateContainer = styled.div`
 `;
 
 const DateLayout = styled.div`
+  font-family: 'Play', sans-serif !important;
   font-size: 30px;
   font-weight : bold;
 `;
 
 const TimeLayout = styled.div`
+  font-family: 'Play', sans-serif !important;
   font-size: 65px;
   font-weight : 600;
   float: right;
   line-height: 75px;
+  letter-spacing: 0;
 `;
 
 const InputLayout = styled.input`
