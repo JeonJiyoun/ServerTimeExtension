@@ -1,6 +1,6 @@
 // TimerContainer.tsx
 import * as React from "react";
-import { TimerLayout, DateContainer, DateLayout, TimeLayout } from "../layouts/ContentLayout";
+import { TimerLayout, DateContainer, DateLayout, TimeLayout } from "../layouts/TimerLayout";
 
 interface DateTimeProps {
     year : number;
@@ -19,7 +19,7 @@ function TimerPresenter (props: DateTimeProps) {
                     {props.month < 10 ? "0" + (props.month + 1) : props.month + 1}
                 </DateLayout>
                 <DateLayout>
-                    {props.date < 10 ? "0" + props.date + 1 : props.date}
+                    {props.date < 10 ? "0" + props.date : props.date}
                 </DateLayout>
             </DateContainer>
             <TimeLayout>{props.hours}:{props.minutes}:{props.seconds}</TimeLayout>            
