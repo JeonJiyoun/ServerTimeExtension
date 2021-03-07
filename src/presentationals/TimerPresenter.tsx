@@ -1,6 +1,6 @@
 // TimerContainer.tsx
 import * as React from "react";
-import { TimerLayout, DateContainer, DateLayout, TimeLayout } from "../layouts/ContentLayout";
+import { TimerLayout, DateContainer, DateLayout, TimeLayout } from "../layouts/TimerLayout";
 
 interface DateTimeProps {
     year : number;

@@ -1,6 +1,6 @@
 // Content.tsx
 import * as React from "react";
-import { InputLayout } from "../layouts/ContentLayout";
+import { InputLayout } from "../layouts/UrlInputLayout";
 
 interface Props {
   onSubmit: (value: string) => void;
@@ -20,8 +20,6 @@ function UrlInputPresenter({ onSubmit }: Props) {
   };
 
   return <InputLayout value={value} onChange={onChangeInput} onKeyUp={onEnter} />
-
-  //return <input value={value} onChange={onChangeInput} onKeyUp={onEnter} />;
 }
 
 export default UrlInputPresenter;
