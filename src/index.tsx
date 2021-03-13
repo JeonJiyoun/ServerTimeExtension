@@ -22,8 +22,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 function toggle() {
   if (app.style.display === "none") {
     app.style.display = "block";
+    ReactDOM.render(<App />, app);
   } else {
     app.style.display = "none";
+    ReactDOM.render(<div/>, app);
   }
 }
 
@@ -31,5 +33,3 @@ function toggle() {
  * local => document.getElementById("my-extension")
  * extension => app
  */
-
-ReactDOM.render(<App />, app);
