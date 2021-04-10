@@ -1,0 +1,24 @@
+{
+    "name": "Server Time Extension",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Extensions that tell you the server time of the web page you want",
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "permissions": [
+      "http://*/",
+      "https://*/"
+    ],
+    "browser_action": {
+      "default_popup": "",
+      "default_icon": "icon.png"
+    },
+    "content_scripts" : [
+      {
+        "matches": [ "<all_urls>" ],
+        "css": [],
+        "js": ["/main.js"]
+      }
+    ]
+  }
