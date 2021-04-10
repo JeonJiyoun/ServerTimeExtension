@@ -47,7 +47,6 @@ function RootContainer() {
     }
   }, [url]);
 
- console.log(theme);
   return (
     <Draggable defaultPosition={{ x: 0, y: -100 }}>
       <ContentLayout theme={theme}>

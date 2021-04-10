@@ -28,13 +28,10 @@ function TimerContainer ( { url } : TimerProps) {
 
     const interverId = useRef<any>();
     const setTime = () => {
-        console.log(url, "url")
         chrome.runtime.sendMessage(
             { message: "requestServerTime", url: url },
             function (response) {
               const serverTime = new Date(response.time);
-
-              console.log(serverTime, "response")
            
               let hour: number = serverTime.getHours();
               let minutes: number = serverTime.getMinutes();
